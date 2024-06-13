@@ -3,19 +3,27 @@
 {
   "name": "Container",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "jelaniwoods/appdev2023-rails-template",
+  "image": "firstdraft/appdev-rails-template",
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [3000],
+  "forwardPorts": [3000, 4567, 9292],
 
   "portsAttributes": {
     "3000": {
-      "label": "Application"
+      "onAutoForward": "silent"
+    },
+    "4567": {
+      "onAutoForward": "silent"
+    },
+    "9292": {
+      "onAutoForward": "silent"
     }
   },
+
+  "otherPortsAttributes": {"onAutoForward": "ignore"},
 
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "bin/setup",
@@ -26,7 +34,8 @@
       "extensions": ["vortizhe.simple-ruby-erb",
                      "mbessey.vscode-rufo",
                      "aliariff.vscode-erb-beautify",
-                     "eamodio.gitlens"]
+                     "eamodio.gitlens",
+                     "setobiralo.erb-commenter"]
     }
   }
 
